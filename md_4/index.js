@@ -209,21 +209,21 @@ console.log('work');
 // console.log('getUserInfoWithTarget() :', getUserInfoWithTarget());
 
 
-const car = {
-    name: "BMW",
-    cost: 30000,
-    getInfo() {
-        // const getUAH = () => {
-        //     console.log('this :', this);
-        //     return this.cost * 27;
-        // }
-        const getUAH = () => this.cost * 27;
+// const car = {
+//     name: "BMW",
+//     cost: 30000,
+//     getInfo() {
+//         // const getUAH = () => {
+//         //     console.log('this :', this);
+//         //     return this.cost * 27;
+//         // }
+//         const getUAH = () => this.cost * 27;
         
-        return `Car: ${this.name} cost: ${getUAH()}`
-    }
-}
+//         return `Car: ${this.name} cost: ${getUAH()}`
+//     }
+// }
 
-console.log('car.getInfo() :', car.getInfo());
+// console.log('car.getInfo() :', car.getInfo());
 
 
 
