@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 30px;
+    color: orange;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.nav {
+    display: flex;
+    max-width: 700px;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.nav__link {
+    font-size: 20px;
+    font-weight: 300;
+    color: orange;
+    padding: 5px 10px;
+    display: block;
+}
+
+/* 
+
+    Modal
+*/
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed;
+    z-index: 111;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    transition: .8s ease-in-out .3s;
+}
+
+.overlay.active {
+    visibility: visible;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    max-width: 400px;
+    padding: 30px 20px;
+    background: #fff;
+    visibility: hidden;
+    transition: .7s ease-in-out .3s;
+}
+
+
+.active .modal {
+    /* transition: .7s ease-in-out .3s; */
+    visibility: visible;
+    transform: translate(-50%, -50%);
+}
+
+
+
+input {
+    margin-bottom: 20px;
+    display: block;
+    border: 2px solid gold;
+    padding: 5px;
+}
+
+.form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    body { overflow: hidden; }
+
+    .header {
+        position: relative;
+    }
+
+    .nav {
+        position: absolute;
+        right: 0;
+        top: 34px;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 260px;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: .7s ease-in-out;
+    }
+
+    .nav.active {
+        transform: none;
+        visibility: visible;
+    }
+
+    .nav__item {
+        width: 100%;
+    }
+
+    .nav__link {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav__link:focus {
+        background: darkkhaki;
+    }
+
+}
