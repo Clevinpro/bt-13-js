@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.user-list {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  max-width: 900px;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+}
+
+.user-list li {
+  width: 240px;
+  padding: 10px 15px;
+  border: 1px solid goldenrod;
+  cursor: pointer;
+}
+
+.user-list li button {
+  display: block;
+  margin: 0 auto;
+}
+
