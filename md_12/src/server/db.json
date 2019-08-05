@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "title": "ttasdasdasd",
+      "text": "asda,jqhwkqjhkqwjhekjqhkejqwhekjqhkqjwhe",
+      "id": 3
+    },
+    {
+      "title": "tatatsatas",
+      "text": "11111",
+      "id": 4
+    },
+    {
+      "title": "tatatsatas",
+      "text": "11111",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 5
+    }
+  ]
+}

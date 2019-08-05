@@ -8,6 +8,50 @@
 </head>
 <body>
   <script type="module" src="./index.js"></script>
-  
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbRH7esz1ylNuxYzQ5wrv-qayrCqbmaNs&callback=initMap" >
+    </script>
+<script>
+  function initMap() {
+
+      var geocoder = new google.maps.Geocoder;
+      
+      function geocodeLatLng(lat, lng) {
+      
+        let latlng = {
+          lat: lat,
+          lng: lng
+        };
+      
+        geocoder.geocode({
+          'location': latlng
+        }, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+      
+              //This is yout formatted address
+              window.alert(results[0].formatted_address);
+      
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      
+      }
+      
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let latlng = {};
+        latlng.lat = position.coords.latitude;
+        latlng.lng = position.coords.longitude;
+        
+        geocodeLatLng(latlng.lat, latlng.lng);
+     });
+    
+      
+  }
+    </script>
 </body>
 </html>
