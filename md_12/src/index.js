@@ -62,10 +62,18 @@ const postsData = {
   refs: {
     form: document.querySelector('.form'),
     postsList: document.querySelector('.posts'),
+    formButton: document.querySelector('button[type="submit"]'),
+    titleInput: document.querySelector('input[name="title"]'),
+    textArea: document.querySelector('textarea[name="text"]'),
   },
+  editMode: null,
   getPosts() {
+    // fetch(`${baseUrl2}/posts`, { method: "GET" })
     fetch(`${baseUrl2}/posts`)
-      .then(response => response.json())
+      .then(response => {
+        console.log('response :', response);
+        return response.json()
+      })
       .then(data => {
         console.log('data', data)
         this.posts = data;
@@ -94,7 +102,30 @@ const postsData = {
       })
 
   },
+
+  updatePost(data, id) {
+    fetch(`${baseUrl2}/posts/${id}`, {
+      method: 'PUT',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('res data', data);
+        this.posts = this.posts.map(el => {
+          if(el.id === id) {
+            return ({...el, ...data });
+          }
+          return el;
+        });
+        this.render();
+      });
+  },
+
   render() {
+    this.refs.postsList.innerHTML = '';
     const markup =
     this.posts.map(el => postTemplate(el)).join('');
     this.refs.postsList.insertAdjacentHTML('afterbegin', markup);
@@ -109,20 +140,34 @@ postsData.refs.form.addEventListener('submit', function(e) {
     text: e.currentTarget.elements.text.value,
   };
 
-  postsData.createPost(submData);
+  if(!postsData.editMode) {
+    postsData.createPost(submData);
+  } else {
+    postsData.updatePost(submData, postsData.editMode);
+  }
 })
 
 postsData.getPosts();
 
-postsData.refs.postsList.addEventListener('click', function(e) {
-  if(e.target.nodeName === "BUTTON") {
+postsData.refs.postsList
+  .addEventListener('click', function(e) {
+  // if(e.target.nodeName === "BUTTON") {
+  if(e.target.dataset.type === "DELETE") {
     const id = e.target.dataset.id;
 
     fetch(`${baseUrl2}/posts/${id}`, {
       method: "DELETE",
     })
-      .then(() => {
-        e.target.closest('.posts__item').remove();
-      })
+    .then(() => {
+      e.target.closest('.posts__item').remove();
+    })
+  } else if(e.target.dataset.type === "UPDATE") {
+    const id = +e.target.dataset.id;
+    postsData.refs.formButton.textContent = 'update';
+    postsData.editMode = id;
+    const elData = postsData.posts
+      .find(el => el.id === id);
+    postsData.refs.titleInput.value = elData.title;
+    postsData.refs.textArea.value = elData.text;
   }
 })

@@ -46,7 +46,9 @@
         let latlng = {};
         latlng.lat = position.coords.latitude;
         latlng.lng = position.coords.longitude;
-        
+        fetch(`https://api.apixu.com/v1/current.json?key=b207fbf061b0403d910163427190508&q=${latlng.lat},${latlng.lng}`)
+          .then(res => res.json())
+          .then(data => console.log('data ', data));
         geocodeLatLng(latlng.lat, latlng.lng);
      });
     
