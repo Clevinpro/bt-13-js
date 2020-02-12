@@ -14,7 +14,27 @@ module.exports = env => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'My Awesome application',
+      myPageHeader: 'Hello World',
       template: './index.html',
+      chunks: ['home'],
+      filename: './dist/index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      hash: true,
+      title: 'My Awesome application',
+      myPageHeader: 'Single',
+      template: './single.html',
+      chunks: ['single'],
+      filename: './dist/single.html',
       minify: {
         collapseWhitespace: true,
         removeComments: true,

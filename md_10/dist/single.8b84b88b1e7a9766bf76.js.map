@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./js/single.js"],"names":["document","body","insertAdjacentHTML"],"mappings":"4EAAAA,SAASC,KAAKC,mBAAmB,aAAc","file":"single.8b84b88b1e7a9766bf76.js","sourcesContent":["document.body.insertAdjacentHTML('afterbegin', '<h1> single is Works</h1>')\r\n"],"sourceRoot":""}

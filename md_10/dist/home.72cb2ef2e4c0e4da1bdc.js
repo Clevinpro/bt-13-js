@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{"7hx4":function(o,n){document.body.insertAdjacentHTML("afterbegin","<h2>Workssss!!!</h2>"),console.log("home")}},[["7hx4",0]]]);
+//# sourceMappingURL=home.72cb2ef2e4c0e4da1bdc.js.map

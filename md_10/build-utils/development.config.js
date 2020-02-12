@@ -21,6 +21,7 @@ module.exports = env => ({
     quiet: true,
     clientLogLevel: 'warning',
     stats: 'errors-only',
+    hot: true,
     open: true
   }
 });
